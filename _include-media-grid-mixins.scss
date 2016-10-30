@@ -1,0 +1,101 @@
+@charset 'UTF-8';
+
+// Grid defaults
+$grid-defaults: (
+  columns: 12,
+  gutters: 30px,
+  layout: 'standard' // options: 'standard', 'flexbox'
+);
+
+$grid: () !default;
+
+// return a column width as a percentage of total grid width
+@function get-grid-percentage($columns) {
+  @return percentage($columns / get-grid-setting('columns'));
+}
+
+// This allows for user to only declare the grid settings they want to override.
+@function get-grid-setting($key, $settings: map-merge($grid-defaults, $grid)) {
+  @if map-has-key($settings, $key) {
+    @return map-get($settings, $key);
+  }
+}
+
+// Micro clearfix - http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin grid-container() {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  padding: {
+    left:  floor(get-grid-setting('gutters') / 2);
+    right: ceil(get-grid-setting('gutters') / 2);
+  };
+  @include clearfix;
+}
+
+// Grid row
+@mixin grid-row() {
+  margin: {
+    left:  ceil(get-grid-setting('gutters') / -2);
+    right: floor(get-grid-setting('gutters') / -2);
+  };
+
+  @if map-get($grid, 'layout') == 'flexbox' {
+    display: flex;
+    flex-flow: row wrap;
+  } @else {
+    @include clearfix;
+  }
+}
+
+// Grid item
+@mixin grid-item($params) {
+  box-sizing: border-box;
+  overflow: auto;
+  padding: {
+    left: get-grid-setting('gutters') / 2;
+    right: get-grid-setting('gutters') / 2;
+  };
+
+  @if map-get($grid, 'layout') == 'flexbox' {
+    flex: 0 0 auto;
+
+    @each $breakpoint, $column-count in $params {
+      @include media('>=#{$breakpoint}') {
+        flex-basis: get-grid-percentage($column-count);
+      }
+    }
+  } @else {
+    min-height: 1px;
+    position: relative;
+
+    @each $breakpoint, $column-count in $params {
+      @include media(#{'>=' + $breakpoint}) {
+        float: left;
+        width: get-grid-percentage($column-count);
+      }
+    }
+  }
+}
+
+// Allow offsetting of columns
+@mixin grid-item-offset($params) {
+  @each $breakpoint, $columns in $params {
+    @include media(#{'>=' + $breakpoint}) {
+      margin-left: get-grid-percentage($columns);
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "include-media-grid-mixins",
+  "version": "1.0.0",
+  "authors": [
+    "Charley Pugmire <ctpugmire@gmail.com>"
+  ],
+  "description": "A set of mixins for building an on-demand grid using include-media.",
+  "main": "_include-media-grid-mixins.scss",
+  "keywords": [
+    "responsive",
+    "breakpoint",
+    "grid",
+    "mixin",
+    "mixins",
+    "include-media",
+    "sass",
+    "scss"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "include-media": "^1.0.0"
+  }
+}
