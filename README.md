@@ -3,6 +3,9 @@ This is an addon for the great [include-media](http://include-media.com) that al
 
 ## Installation
 
+- bower: `bower install include-media-grid-mixins`
+- npm: `npm install include-media-grid-mixins`
+
 ```
 @import 'include-media';
 @import 'include-media-grid-mixins';
