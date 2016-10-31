@@ -28,6 +28,7 @@ $grid: (
 - `@include grid-container` will create a centered container for your grid. Roughly equivalent to Bootstrap's `.container` - add your own width/max-width as needed.
 - `@include grid-row` will create a row in your grid. Equivalent to Bootstrap's `.row`.
 - `@include grid-item((breakpoint: # of columns, [...]))` accepts a map based on your include-media `$breakpoints` configuration. Set the number of columns for each breakpoint as needed.
+- `@include grid-item-offset((breakpoint: # of columns, [...]))` accepts a map based on your include-media `$breakpoints` configuration. Use to offset a column at given breakpoints.
 
 
 ## Example Usage
