@@ -1,7 +1,7 @@
 {
   "name": "include-media-grid-mixins",
   "version": "1.0.0",
-  "description": "A set of mixins for building grid on demand.",
+  "description": "A set of mixins for building a responsive grid using include-media.",
   "homepage": "https://github.com/puglyfe/include-media-grid-mixins",
   "main": "_include-media-grid-mixins.scss",
   "keywords": [
@@ -19,5 +19,8 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/puglyfe/include-media-grid-mixins.git"
+  },
+  "dependencies": {
+    "include-media": "^1.4.8"
   }
 }

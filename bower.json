@@ -4,7 +4,7 @@
   "authors": [
     "Charley Pugmire <ctpugmire@gmail.com>"
   ],
-  "description": "A set of mixins for building an on-demand grid using include-media.",
+  "description": "A set of mixins for building a responsive grid using include-media.",
   "homepage": "https://github.com/puglyfe/include-media-grid-mixins",
   "main": "_include-media-grid-mixins.scss",
   "keywords": [
